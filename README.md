@@ -32,6 +32,13 @@ The third objective is to practice our usage of Docker. All the components of th
 * You are able to show where the apache config files are located (in a running container).
 * You must have done the demo on May 25th at the latest.
 
+### Command
+* docker build -t res/apache_php .
+* docker run -d -p 1234:80 res/apache_php
+* 192.168.42.42:1234
+* docker exec -it nameContain /bin/bash
+* cd /etc/apache2
+
 
 ## Step 2: Dynamic HTTP server with express.js
 
