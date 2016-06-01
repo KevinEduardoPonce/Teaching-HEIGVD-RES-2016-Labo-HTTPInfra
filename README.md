@@ -56,6 +56,35 @@ The third objective is to practice our usage of Docker. All the components of th
 * You don't have to use express.js; if you want, you can use another JavaScript web framework or event another language.
 * You must have done the demo on June 1st at the latest.
 
+### Command
+* Quand on démarre une nouvelle application node.js on fait npm init
+* name step2
+* version 0.1.0
+* enter.. enter..etc -> crlation de package.json
+* Dans le répertoire de package : npm install --save chance // le module npm s'appelle chance
+* Il crée node_modules et met la dépendance dans package
+* On crée le fichier js définis dans dockerfile
+* chance.name() génère des noms aléatoire
+* docker build -t res/step2 . //. dossier courant comme contexte
+* docker run res/step2  //Quand un container lance un script et qu'il est fini alors container s'arrete
+* docker ps -a voir les anciens container
+* docker run -it res/step2 /bin/bash
+* node -v
+* dans /opt/app on voit les fichiers de src
+* //////////////Fin video 1
+* npm install --save express pour le framework du serveur http
+* npm install --no-bin-links express --save
+* modifier le fichier js pour créer le serveur
+* node labo2.js //Demarre le serveur sur 3000
+* telnet localhost 3000
+* GET / HTTP/1.0
+* GET /r2d2 HTTP/1.0
+* docker inspect nom_container //recup l'adresse ip
+
+*docker run -p 1234:3000 res/step2
+* docker run -d -p 1234:80 res/apache_php
+* 192.168.42.42:1234
+
 
 ## Step 3: Reverse proxy with apache (static configuration)
 
