@@ -1,4 +1,4 @@
-# Teaching-HEIGVD-RES-2016-Labo-HTTPInfra
+﻿# Teaching-HEIGVD-RES-2016-Labo-HTTPInfra
 
 ## Objectives
 
@@ -103,6 +103,23 @@ The third objective is to practice our usage of Docker. All the components of th
 * You are able to explain why the static configuration is fragile and needs to be improved.
 * You must have done the demo on June 8th at the latest.
 
+### Command
+* 172.17.0.2 static
+* 172.17.0.3 dynamic
+* docker run -it -p 8080:80 php:5.6-apache /bin/bash démarrer un container et port mapping depuis l'extérieur
+* 000-default configu de base apache on spécifie le dossier du contenu static.
+* ProxyPass lors de l'accès
+* ProxyPassReverse avant le renvoie eventuellement mettre des entetes etc
+* a2enmod proxy et a2enmod proxy_http active les modules pour le proxy
+* service apache2 reload
+* telnet 192.168.42.42 8080
+** GET / HTTP/1.0
+** HOST: demo.res.ch -> 172.17.0.2
+** GET /api/salut HTTP/1.0 
+** HOST: demo.res.ch ->172.17.0.3
+
+* 2 virtual host pour si il ne spécifie pas host
+
 
 ## Step 4: AJAX requests with JQuery
 
@@ -118,8 +135,16 @@ The third objective is to practice our usage of Docker. All the components of th
 * You are able to explain why your demo would not work without a reverse proxy (because of a security restriction).
 * You must have done the demo on June 8th at the latest.
 
-## Step 5: Dynamic reverse proxy configuration
+### Command
+* docker build -t res/step2 .
+* ajouter le script dans index.html
+* créer le script dans js/
+* docker run -d --name apache_static res/apache_php
+* docker run -d --name apache_dynamic res/salut
+* docker run -p 8080:80 res/proxy
+* modifie c:\windows\system32\driver\etc\hosts 192.168.42.42 demo.res.ch
 
+## Step 5: Dynamic reverse proxy configuration
 ### Webcasts
 
 * [Labo HTTP (5a): configuration dynamique du reverse proxy](https://www.youtube.com/watch?v=iGl3Y27AewU)
